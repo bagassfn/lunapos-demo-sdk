@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,13 +33,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  static const platform = MethodChannel("example.com/native-code-example");
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void runPosActivity() {
+    String firstName = _firstNameController.text;
+    String lastName = _lastNameController.text;
+    String email = _emailController.text;
+    String phone = _phoneController.text;
+
+    if (firstName.isEmpty) {
+      Fluttertoast.showToast(msg: "first name cannot be empty");
+      return;
+    }
+    if (firstName.isEmpty) {
+      Fluttertoast.showToast(msg: "last name cannot be empty");
+      return;
+    }
+    if (firstName.isEmpty) {
+      Fluttertoast.showToast(msg: "email cannot be empty");
+      return;
+    }
+    if (firstName.isEmpty) {
+      Fluttertoast.showToast(msg: "phone number cannot be empty");
+      return;
+    }
+
+    try {
+      platform.invokeMethod("startPos", {
+        "firstName": firstName,
+        "lastName": lastName,
+        "email" : email,
+        "phone": phone
+      });
+    } on PlatformException catch (e) {
+      // ignore
+    }
   }
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,25 +82,49 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            TextField(
+              controller: _firstNameController,
+              decoration: const InputDecoration(labelText: 'First Name'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const SizedBox(
+              height: 16.0,
             ),
+            TextField(
+              controller: _lastNameController,
+              decoration: const InputDecoration(labelText: 'Last Name'),
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            TextField(
+              controller: _emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            TextField(
+              controller: _phoneController,
+              decoration: const InputDecoration(labelText: 'Phone Number'),
+            ),
+            Container(
+              child: Text("Tanpa angka nol (0) di depan nomor handphone"),
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            ElevatedButton(
+              onPressed: runPosActivity,
+              child: const Text("Jalankan Luna")
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
