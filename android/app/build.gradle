@@ -4,11 +4,10 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 
-    /**
-     * Add this */
-    id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs.kotlin'
-    id 'kotlin-parcelize'
+    // Aktifkan plugin ke dalam project android
+    id 'kotlin-kapt'                            // << 1
+    id 'androidx.navigation.safeargs.kotlin'    // << 2
+    id 'kotlin-parcelize'                       // << 3
 }
 
 def localProperties = new Properties()
@@ -58,17 +57,18 @@ android {
         }
     }
 
+    // Aktifkan feature viewBinding
     buildFeatures {
-        viewBinding true
+        viewBinding true // << 4
     }
-
 }
 
 flutter {
     source = "../.."
 }
 
-dependencies {
+// Tambahkan semua dependecies di bawah ini
+dependencies { // << 5
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
@@ -101,7 +101,6 @@ dependencies {
     /* Glide Image Processing */
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     kapt 'com.github.bumptech.glide:compiler:4.14.2'
-//    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
     /* Networking library */
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -112,6 +111,6 @@ dependencies {
     /* Chart Library */
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    // Luna Aar
-    implementation files("/Users/jhonhell/Workspace/LunaProject/OwnerApp/luna_owner_app/app/build/outputs/aar/app-release.aar")
+    // implementasikan Luna Aar
+    implementation rootProject.files("libs/lunapos_sdk_dev.aar") // << 6
 }

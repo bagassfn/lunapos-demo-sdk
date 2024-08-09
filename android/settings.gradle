@@ -13,6 +13,8 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+
+        //tambahkan line berikut
         maven { url 'https://jitpack.io' }
     }
 }
@@ -20,6 +22,8 @@ pluginManagement {
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
     id "com.android.application" version "7.3.0" apply false
+
+    // tambahkan dengan ini
     id "org.jetbrains.kotlin.android" version "1.9.0" apply false
 }
 

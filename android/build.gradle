@@ -2,9 +2,10 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // add repositories
-        gradlePluginPortal()
-        maven { url 'https://jitpack.io' }
+
+        // Tambahkan repository
+        gradlePluginPortal()                // << 1
+        maven { url 'https://jitpack.io' }  // << 2
     }
 }
 
@@ -20,7 +21,7 @@ tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
 
-// Add all code below
+// Tambahkan semua code di bawah ini
 buildscript {
     repositories {
         google()
@@ -32,4 +33,4 @@ buildscript {
         def nav_version = "2.5.3"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
-}
+} // << 3
