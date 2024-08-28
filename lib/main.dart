@@ -41,28 +41,28 @@ class _MyHomePageState extends State<MyHomePage> {
     String email = _emailController.text;
     String phone = _phoneController.text;
 
-    if (firstName.isEmpty) {
-      Fluttertoast.showToast(msg: "first name cannot be empty");
-      return;
-    }
-    if (firstName.isEmpty) {
-      Fluttertoast.showToast(msg: "last name cannot be empty");
-      return;
-    }
-    if (firstName.isEmpty) {
-      Fluttertoast.showToast(msg: "email cannot be empty");
-      return;
-    }
-    if (firstName.isEmpty) {
-      Fluttertoast.showToast(msg: "phone number cannot be empty");
-      return;
-    }
+    // if (firstName.isEmpty) {
+    //   Fluttertoast.showToast(msg: "first name cannot be empty");
+    //   return;
+    // }
+    // if (firstName.isEmpty) {
+    //   Fluttertoast.showToast(msg: "last name cannot be empty");
+    //   return;
+    // }
+    // if (firstName.isEmpty) {
+    //   Fluttertoast.showToast(msg: "email cannot be empty");
+    //   return;
+    // }
+    // if (firstName.isEmpty) {
+    //   Fluttertoast.showToast(msg: "phone number cannot be empty");
+    //   return;
+    // }
 
     try {
       platform.invokeMethod("startPos", {
         "firstName": firstName,
         "lastName": lastName,
-        "email" : email,
+        "email": email,
         "phone": phone
       });
     } on PlatformException catch (e) {
@@ -70,10 +70,19 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _firstNameController =
+      TextEditingController(text: '');
+  final TextEditingController _lastNameController =
+      TextEditingController(text: '');
+  final TextEditingController _emailController =
+      TextEditingController(text: '');
+  final TextEditingController _phoneController =
+      TextEditingController(text: '');
+
+  // final TextEditingController _firstNameController = TextEditingController(text: 'Jhon');
+  // final TextEditingController _lastNameController = TextEditingController(text: 'Hell');
+  // final TextEditingController _emailController = TextEditingController(text: 'azizlunapos@gmail.com');
+  // final TextEditingController _phoneController = TextEditingController(text: '87283746323');
 
   @override
   Widget build(BuildContext context) {
@@ -119,9 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 16.0,
             ),
             ElevatedButton(
-              onPressed: runPosActivity,
-              child: const Text("Jalankan Luna")
-            )
+                onPressed: runPosActivity, child: const Text("Jalankan Luna"))
           ],
         ),
       ),
