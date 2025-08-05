@@ -113,6 +113,6 @@ dependencies { // << 5
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     // implementasikan Luna Aar
-    implementation rootProject.files("libs/lunapos_sdk_dev.aar") // << 6
-//    implementation files("/Users/jhonhell/Workspace/LunaProject/OwnerApp/luna_owner_app/app/build/outputs/aar/app-release.aar") // << dummy
+    implementation rootProject.files("libs/lunapos_sdk_prod_sit.aar") // << 6
+//    implementation files("/Users/jhonhell/Workspace/LunaProject/OwnerApp/hibank-sdk/app/build/outputs/aar/app-release.aar") // << dummy
 }

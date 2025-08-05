@@ -1,8 +1,8 @@
 package com.example.lunademo.luna_demo_library
 
 import android.content.Intent
-import com.lunapos.poslite.LunaConstant
-import com.lunapos.poslite.LunaMainActivity
+import com.lunapos.poslitesit.LunaConstant
+import com.lunapos.poslitesit.LunaMainActivity
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
