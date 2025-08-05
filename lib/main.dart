@@ -70,19 +70,23 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  final TextEditingController _firstNameController =
-      TextEditingController(text: '');
-  final TextEditingController _lastNameController =
-      TextEditingController(text: '');
-  final TextEditingController _emailController =
-      TextEditingController(text: '');
-  final TextEditingController _phoneController =
-      TextEditingController(text: '');
+  // final TextEditingController _firstNameController =
+  //     TextEditingController(text: '');
+  // final TextEditingController _lastNameController =
+  //     TextEditingController(text: '');
+  // final TextEditingController _emailController =
+  //     TextEditingController(text: '');
+  // final TextEditingController _phoneController =
+  //     TextEditingController(text: '');
 
-  // final TextEditingController _firstNameController = TextEditingController(text: 'Jhon');
-  // final TextEditingController _lastNameController = TextEditingController(text: 'Hell');
-  // final TextEditingController _emailController = TextEditingController(text: 'azizlunapos@gmail.com');
-  // final TextEditingController _phoneController = TextEditingController(text: '87283746323');
+  final TextEditingController _firstNameController =
+      TextEditingController(text: 'Jhon');
+  final TextEditingController _lastNameController =
+      TextEditingController(text: 'Hell');
+  final TextEditingController _emailController =
+      TextEditingController(text: 'jhonhell@yopmail.com');
+  final TextEditingController _phoneController =
+      TextEditingController(text: '87283746323');
 
   @override
   Widget build(BuildContext context) {

@@ -30,12 +30,12 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.example.lunademo.luna_demo_library"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     defaultConfig {
@@ -44,7 +44,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = 23
-        targetSdk = flutter.targetSdkVersion
+        targetSdk = 35
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
@@ -69,6 +69,7 @@ flutter {
 
 // Tambahkan semua dependecies di bawah ini
 dependencies { // << 5
+
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
